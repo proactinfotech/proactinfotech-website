@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 import { COMPANY } from "@/constants/company";
 import { TEAM, type TeamMember } from "@/constants/team";
-import { stagger, fadeUp, fadeLeft, useParallax } from "@/lib/animations";
+import { stagger, fadeUp, fadeLeft, fadeRight, useParallax } from "@/lib/animations";
 import { ExploreButton } from "@/components/layout/ExploreButton";
 
 const About = () => (
@@ -49,6 +49,14 @@ function AboutHero() {
           <span className="text-accent">what </span>
           matter.
         </motion.h1>
+        <motion.p
+          variants={fadeRight}
+          className="mt-10 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg"
+        >
+          We are a collective of founders, operators, and engineers united by one
+          belief — that the companies shaping the next decade haven&apos;t been
+          built yet. We&apos;re here to change that.
+        </motion.p>
         <ExploreButton />
       </motion.div>
     </section>
@@ -139,7 +147,7 @@ function TeamSection() {
           </h2>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 md:gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 md:gap-8">
           {TEAM.map((member, i) => (
             <TeamCard key={member.name} member={member} index={i} />
           ))}
@@ -171,27 +179,26 @@ function TeamCard({ member, index }: TeamCardProps) {
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.65, delay: 0.1 * index, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4, transition: { duration: 0.3, ease: "easeOut" } }}
-      className="group relative flex overflow-hidden rounded-2xl border border-border bg-card"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card"
     >
-      {/* Square image / avatar area — 60% width, square */}
-      <div className="relative aspect-square w-[60%] shrink-0 overflow-hidden bg-gradient-to-br from-secondary/30 via-secondary/10 to-background">
-        {/* Large watermark index */}
-        <span
-          className="pointer-events-none absolute bottom-2 right-3 select-none font-display font-bold leading-none text-foreground/[0.06] transition-colors duration-500 group-hover:text-primary/[0.12]"
-          style={{ fontSize: "clamp(2.5rem,6vw,4rem)" }}
-        >
-          {indexLabel}
-        </span>
-
-        {/* Centred initials */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span
-            className="inline-block font-display font-bold text-primary/25 transition-all duration-500 group-hover:scale-110 group-hover:text-primary/50"
-            style={{ fontSize: "clamp(1.8rem,4vw,3rem)" }}
-          >
-            {initials}
-          </span>
-        </div>
+      {/* Full photo area — full width, natural proportions */}
+      <div className="relative w-full overflow-hidden bg-gradient-to-br from-secondary/30 via-secondary/10 to-background">
+        {member.photo ? (
+          <img
+            src={member.photo}
+            alt={member.name}
+            className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        ) : (
+          <div className="flex aspect-[3/4] w-full items-center justify-center">
+            <span
+              className="inline-block font-display font-bold text-primary/25 transition-all duration-500 group-hover:scale-110 group-hover:text-primary/50"
+              style={{ fontSize: "clamp(2.5rem,5vw,4rem)" }}
+            >
+              {initials}
+            </span>
+          </div>
+        )}
 
         {/* Bio reveal overlay */}
         <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-foreground/85 via-foreground/30 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -201,19 +208,21 @@ function TeamCard({ member, index }: TeamCardProps) {
         </div>
       </div>
 
-      {/* Right: name + role + linkedin — 40% width */}
-      <div className="flex w-[40%] flex-col justify-between px-5 py-5">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+      {/* Bottom: name + role + linkedin */}
+      <div className="flex items-stretch px-4 pb-4 pt-3">
+        {/* Left 80% — role + name */}
+        <div className="w-4/5 pr-2">
+          <p className="text-[10px] font-semibold uppercase tracking-widest text-primary">
             {member.role}
           </p>
-          <h3 className="mt-2 font-display text-lg font-bold leading-tight text-foreground md:text-xl">
+          <h3 className="mt-1 font-display text-base font-bold leading-tight text-foreground md:text-lg">
             {member.name}
           </h3>
         </div>
 
-        <div className="flex items-end justify-between">
-          <span className="font-display text-3xl font-bold text-foreground/8 transition-colors duration-300 group-hover:text-primary/20">
+        {/* Right 20% — number above linkedin */}
+        <div className="flex w-1/5 flex-col items-center justify-end gap-1">
+          <span className="font-display text-2xl font-bold text-foreground/[0.07] transition-colors duration-300 group-hover:text-primary/20">
             {indexLabel}
           </span>
           {member.linkedin && (

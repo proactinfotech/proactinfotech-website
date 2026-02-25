@@ -26,7 +26,7 @@ const footerNav = {
 
 export function Footer() {
   return (
-    <footer className="relative z-50 overflow-hidden px-6 pb-12 pt-32 md:px-20">
+    <footer className="relative z-50 overflow-hidden px-6 pb-8 pt-16 md:px-20">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-20">
           <motion.div
@@ -72,9 +72,9 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-24 overflow-hidden md:mt-32"
+          className="mt-10 overflow-hidden md:mt-14"
         >
-          <span className="block font-display text-[clamp(5rem,20vw,20rem)] font-bold leading-[0.85] tracking-tight" style={{ color: "#2E4B3C" }}>
+          <span className="block font-display text-[clamp(3rem,12vw,11rem)] font-bold leading-[0.9] tracking-tight pb-2" style={{ color: "#2E4B3C" }}>
             {COMPANY.name}
           </span>
         </motion.div>
