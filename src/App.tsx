@@ -13,6 +13,7 @@ import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { HeroBorderFrame } from "@/components/layout/HeroBorderFrame";
 import { PageTransitionProvider } from "@/components/layout/PageTransition";
 import { HeroSphere } from "@/components/three/HeroSphere";
+import { Analytics } from "@vercel/analytics/react";
 
 function RouteScrollReset() {
   const { pathname } = useLocation();
@@ -82,6 +83,7 @@ const App = () => (
           <PageNavigator />
         </PageTransitionProvider>
       </BrowserRouter>
+      <Analytics />
     </TooltipProvider>
   </QueryClientProvider>
 );
