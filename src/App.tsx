@@ -4,15 +4,13 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { SideNav } from "@/components/layout/SideNav";
 import { Footer } from "@/components/layout/Footer";
-import { PageNavigator } from "@/components/layout/PageNavigator";
-import { LogoPill, MobileLogoPill } from "@/components/layout/LogoPill";
 import { BackgroundParticles } from "@/components/layout/BackgroundParticles";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { HeroBorderFrame } from "@/components/layout/HeroBorderFrame";
 import { PageTransitionProvider } from "@/components/layout/PageTransition";
 import { HeroSphere } from "@/components/three/HeroSphere";
+import { MenuPage } from "@/features/menu";
 import { Analytics } from "@vercel/analytics/react";
 
 function RouteScrollReset() {
@@ -28,7 +26,7 @@ function ConditionalHeroSphere() {
   const { pathname } = useLocation();
   const hidden = ["/contact"];
   if (hidden.includes(pathname)) return null;
-  return <HeroSphere />;
+  return <HeroSphere centered={pathname === "/"} />
 }
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -53,9 +51,6 @@ const App = () => (
           <RouteScrollReset />
           <HeroBorderFrame />
           <BackgroundParticles />
-          <LogoPill />
-          <MobileLogoPill />
-          <SideNav />
           <main className="relative z-10">
             <ConditionalHeroSphere />
             <Suspense
@@ -66,7 +61,8 @@ const App = () => (
               }
             >
               <Routes>
-                <Route path="/" element={<Index />} />
+                <Route path="/" element={<MenuPage />} />
+                <Route path="/home" element={<Index />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/culture" element={<Culture />} />
                 <Route path="/careers" element={<Careers />} />
@@ -80,7 +76,6 @@ const App = () => (
           </main>
           <Footer />
           <ScrollToTop />
-          <PageNavigator />
         </PageTransitionProvider>
       </BrowserRouter>
       <Analytics />

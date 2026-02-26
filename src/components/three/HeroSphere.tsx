@@ -3,18 +3,27 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
 /** Glowing misty sphere inspired by clusterlabs.com/mist */
-export function HeroSphere() {
-  const [opacity, setOpacity] = useState(0.4);
+export function HeroSphere({ centered = false }: { centered?: boolean }) {
+  // On other pages, post-scroll opacity = 0.4 - 0.25 = 0.15  — match that for the menu
+  const [opacity, setOpacity] = useState(centered ? 0.15 : 0.4);
 
   useEffect(() => {
+    if (centered) {
+      // Always enforce the dimmed post-scroll opacity when on menu page,
+      // even if we're arriving from another page that had a brighter value.
+      setOpacity(0.15);
+      return;
+    }
     function handleScroll() {
       const progress = Math.min(window.scrollY / window.innerHeight, 1);
       // Fade from 0.40 → 0.15 as user scrolls past the hero
       setOpacity(0.4 - progress * 0.25);
     }
+    // Sync immediately on arrival (in case scrollY is non-zero)
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [centered]);
 
   return (
     <div
@@ -32,13 +41,13 @@ export function HeroSphere() {
         <pointLight position={[-5, -3, 3]} intensity={0.4} color="#FFA74F" />
         <pointLight position={[0, -4, 2]} intensity={0.3} color="#09332C" />
         <pointLight position={[3, 0, -2]} intensity={0.3} color="#2E4B3C" />
-        <MistSphere />
+        <MistSphere centered={centered} />
       </Canvas>
     </div>
   );
 }
 
-function MistSphere() {
+function MistSphere({ centered = false }: { centered?: boolean }) {
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
@@ -52,10 +61,13 @@ function MistSphere() {
     []
   );
 
-  // Initial placement values
-  const startPos = useMemo(() => new THREE.Vector3(1.2, 0, 0), []);
+  // When centered, lock to center — no scroll-driven movement
+  const startPos = useMemo(
+    () => centered ? new THREE.Vector3(0, 0, -1.5) : new THREE.Vector3(1.2, 0, 0),
+    [centered]
+  );
   const endPos = useMemo(() => new THREE.Vector3(0, 0, -1.5), []);
-  const startScale = 1.4;
+  const startScale = centered ? 1.2 : 1.4;
   const endScale = 1.2;
 
   useFrame((state) => {
@@ -186,7 +198,7 @@ function MistSphere() {
   `;
 
   return (
-    <mesh ref={meshRef} position={[1.2, 0.2, 0]} scale={1.4}>
+    <mesh ref={meshRef} position={centered ? [0, 0, -1.5] : [1.2, 0.2, 0]} scale={centered ? 1.2 : 1.4}>
       <sphereGeometry args={[1, 64, 64]} />
       <shaderMaterial
         ref={materialRef}

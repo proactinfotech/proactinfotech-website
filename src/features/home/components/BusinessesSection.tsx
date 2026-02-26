@@ -26,7 +26,7 @@ function ColorPanel({ biz, index }: { biz: Business; index: number }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex items-center justify-center overflow-hidden md:min-h-[420px]"
+      className="relative flex items-center justify-center overflow-hidden min-h-[180px] md:min-h-[420px]"
       style={{ background: biz.color }}
     >
       {/* subtle radial overlay */}

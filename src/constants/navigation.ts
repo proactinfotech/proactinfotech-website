@@ -11,7 +11,7 @@ export interface SectionLink {
 
 /** Main pages shown in bottom navigator */
 export const PAGES: NavPage[] = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
   { label: "About", href: "/about" },
   { label: "Culture", href: "/culture" },
   { label: "Careers", href: "/careers" },
@@ -22,7 +22,7 @@ export const PAGES: NavPage[] = [
 
 /** Per-page section anchors for floating side icons */
 export const PAGE_SECTIONS: Record<string, SectionLink[]> = {
-  "/": [
+  "/home": [
     { id: "businesses", label: "Businesses", icon: "briefcase" },
     { id: "vision", label: "Vision", icon: "eye" },
     { id: "careers", label: "Working", icon: "users" },

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { COMPANY } from "@/constants/company";
 import { stagger, fadeUp, fadeLeft, fadeRight, useParallax } from "@/lib/animations";
 import { ExploreButton } from "@/components/layout/ExploreButton";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const PERKS = [
   { title: "Remote-first", description: "Work from anywhere. We hire globally and trust our people." },
@@ -23,7 +24,7 @@ const Careers = () => (
 
 function CareersHero() {
   return (
-    <section id="careers-hero" className="flex min-h-[70vh] items-end px-6 pb-20 pt-32 md:min-h-[80vh] md:pb-24 md:px-20">
+    <section id="careers-hero" className="flex min-h-[80vh] items-end px-6 pb-14 pt-24 md:min-h-[80vh] md:pb-24 md:pt-32 md:px-20">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -42,17 +43,16 @@ function CareersHero() {
           />
           Careers
         </motion.span>
-        <motion.h1
-          variants={fadeUp}
-          className="max-w-5xl font-display text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[0.9] tracking-tight text-foreground"
-        >
-          Do the most
-          <br />
-          <span className="text-primary">important work</span>
-          <br />
-          <span className="text-accent">of your </span>
-          career.
-        </motion.h1>
+        <RepelWrapper variants={fadeUp}>
+          <h1 className="max-w-5xl font-display text-[clamp(2rem,6vw,6.5rem)] font-bold leading-[0.9] tracking-tight text-foreground">
+            Do the most
+            <br />
+            <span className="text-primary">important work</span>
+            <br />
+            <span className="text-accent">of your </span>
+            career.
+          </h1>
+        </RepelWrapper>
         <motion.p
           variants={fadeRight}
           className="mt-10 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg"

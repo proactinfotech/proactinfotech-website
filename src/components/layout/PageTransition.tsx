@@ -56,6 +56,17 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
     [pathname, phase]
   );
 
+  // Intercept browser back / forward — navigation already happened,
+  // so just play the hold → out reveal over the newly-loaded page.
+  useEffect(() => {
+    const handlePopState = () => {
+      window.scrollTo(0, 0);
+      setPhase("hold");
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   useEffect(() => {
     if (phase === "in") {
       const t = setTimeout(() => {
@@ -130,17 +141,21 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
           </div>
 
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <motion.span
-              initial={isInitialReveal.current ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+            <motion.div
+              initial={isInitialReveal.current ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.85 }}
               animate={{
                 opacity: covered ? 1 : 0,
-                scale: covered ? 1 : 0.5,
+                scale: covered ? 1 : 0.85,
               }}
               transition={{ duration: 0.4, delay: covered ? 0.4 : 0 }}
-              className="relative z-10 font-display text-5xl font-bold text-primary sm:text-6xl"
+              className="relative z-10 text-center"
             >
-              {COMPANY.name.charAt(0)}
-            </motion.span>
+              {COMPANY.name.split(" ").map((word) => (
+                <span key={word} className="block font-display text-[clamp(3rem,10vw,8rem)] font-bold leading-[0.95] tracking-tight text-foreground">
+                  {word}
+                </span>
+              ))}
+            </motion.div>
           </div>
         </div>
       )}

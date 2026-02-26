@@ -4,6 +4,7 @@ import { COMPANY } from "@/constants/company";
 import { TEAM, type TeamMember } from "@/constants/team";
 import { stagger, fadeUp, fadeLeft, fadeRight, useParallax } from "@/lib/animations";
 import { ExploreButton } from "@/components/layout/ExploreButton";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const About = () => (
   <>
@@ -15,7 +16,7 @@ const About = () => (
 
 function AboutHero() {
   return (
-    <section id="about-hero" className="flex min-h-[70vh] items-end px-6 pb-20 pt-32 md:min-h-[80vh] md:pb-24 md:px-20">
+    <section id="about-hero" className="flex min-h-[80vh] items-end px-6 pb-14 pt-24 md:min-h-[80vh] md:pb-24 md:pt-32 md:px-20">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -36,19 +37,16 @@ function AboutHero() {
           />
           About
         </motion.span>
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="max-w-5xl font-display text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[0.9] tracking-tight text-foreground"
-        >
-          We exist
-          <br />
-          <span className="text-primary">to build</span>
-          <br />
-          <span className="text-accent">what </span>
-          matter.
-        </motion.h1>
+        <RepelWrapper variants={fadeUp} initial="hidden" animate="show">
+          <h1 className="max-w-5xl font-display text-[clamp(2rem,6vw,6.5rem)] font-bold leading-[0.9] tracking-tight text-foreground">
+            We exist
+            <br />
+            <span className="text-primary">to build</span>
+            <br />
+            <span className="text-accent">what </span>
+            matter.
+          </h1>
+        </RepelWrapper>
         <motion.p
           variants={fadeRight}
           className="mt-10 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg"

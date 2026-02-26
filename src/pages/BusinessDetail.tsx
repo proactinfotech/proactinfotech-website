@@ -2,6 +2,7 @@ import { useParams, Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
 import { getBusinessBySlug, BUSINESSES } from "@/constants/businesses";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const stagger = {
   hidden: {},
@@ -24,7 +25,7 @@ const BusinessDetail = () => {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[70vh] items-end overflow-hidden px-6 pb-20 pt-32 md:min-h-[80vh] md:pb-24 md:px-20">
+      <section className="relative flex min-h-[70vh] items-end overflow-hidden px-6 pb-14 pt-24 md:min-h-screen md:pb-24 md:pt-32 md:px-20">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -48,12 +49,11 @@ const BusinessDetail = () => {
           >
             {business.tagline}
           </motion.span>
-          <motion.h1
-            variants={fadeUp}
-            className="font-display text-[clamp(3rem,10vw,10rem)] font-bold leading-[0.85] tracking-tight text-foreground"
-          >
-            {business.name}
-          </motion.h1>
+          <RepelWrapper variants={fadeUp}>
+            <h1 className="font-display text-[clamp(2.5rem,7vw,7.5rem)] font-bold leading-[0.85] tracking-tight text-foreground">
+              {business.name}
+            </h1>
+          </RepelWrapper>
           <motion.p
             variants={fadeUp}
             className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-xl"

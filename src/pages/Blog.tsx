@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const Blog = () => {
   return (
@@ -13,9 +14,11 @@ const Blog = () => {
         <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-full border border-border bg-secondary">
           <Clock size={32} className="text-primary" />
         </div>
-        <h1 className="font-display text-[clamp(3rem,8vw,8rem)] font-bold leading-[0.9] text-foreground">
-          <span className="text-primary">Blog</span>
-        </h1>
+        <RepelWrapper>
+          <h1 className="font-display text-[clamp(3rem,8vw,8rem)] font-bold leading-[0.9] text-foreground">
+            <span className="text-primary">Blog</span>
+          </h1>
+        </RepelWrapper>
         <p className="mt-6 max-w-lg text-lg text-muted-foreground">
           Coming soon. Stay tuned for insights, stories, and updates.
         </p>

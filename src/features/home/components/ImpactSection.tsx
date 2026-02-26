@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { useParallax } from "@/lib/animations";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const STATS = [
   { stat: "50M+", label: "Lives impacted" },
@@ -13,7 +14,7 @@ export function ImpactSection() {
   const heading = useParallax(50);
 
   return (
-    <section ref={sectionRef} id="impact" className="px-6 py-40 md:px-20">
+    <section ref={sectionRef} id="impact" className="px-6 py-16 md:px-20 md:py-40">
       <div className="mx-auto max-w-7xl">
         <motion.div
           ref={heading.ref}
@@ -33,18 +34,20 @@ export function ImpactSection() {
             />
             Our Impact
           </span>
-          <h2 className="mt-8 max-w-4xl font-display text-[clamp(2rem,6vw,6rem)] font-bold leading-[0.95] text-foreground">
-            Making a difference
-            <br />
-            <span className="text-accent">beyond business.</span>
-          </h2>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
+          <RepelWrapper config={{ maxRepel: 18 }}>
+            <h2 className="mt-8 max-w-4xl font-display text-[clamp(2rem,6vw,6rem)] font-bold leading-[0.95] text-foreground">
+              Making a difference
+              <br />
+              <span className="text-accent">beyond business.</span>
+            </h2>
+          </RepelWrapper>
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             We&apos;re committed to creating positive change — from climate
             conscious operations to community engagement. Details coming soon.
           </p>
         </motion.div>
 
-        <div className="mt-20 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3 md:mt-20">
           {STATS.map((item, i) => (
             <motion.div
               key={item.label}

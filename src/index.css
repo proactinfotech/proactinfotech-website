@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -54,8 +55,8 @@
     --gradient-card-hover: hsl(36 76% 85%); /* #F7DFBA */
     --shadow-glow: none;
 
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-body: 'Satoshi', system-ui, sans-serif;
   }
 }
 
@@ -66,12 +67,13 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
-    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4, h5, h6 {

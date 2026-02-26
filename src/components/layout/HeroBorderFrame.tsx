@@ -28,7 +28,7 @@ export function HeroBorderFrame() {
           borderRadius: `${borderRadius}px`,
           // Large spread shadow fills the area outside the rounded rect
           boxShadow: `0 0 0 ${borderInset + 50}px #2E4B3C`,
-          border: "1.5px solid hsl(var(--primary) / 0.15)",
+          border: "3px solid hsl(var(--primary) / 0.35)",
         }}
       />
     </div>

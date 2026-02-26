@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { COMPANY } from "@/constants/company";
 import { fadeLeft, fadeRight, useParallax, useScrollScale } from "@/lib/animations";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 export function WorkingSection() {
   const textBlock = useParallax(40);
   const imageBlock = useScrollScale(0.88, 1);
 
   return (
-    <section id="careers" className="px-6 py-40 md:px-20">
+    <section id="careers" className="px-6 py-16 md:px-20 md:py-40">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-16 md:gap-20 md:grid-cols-2">
           <motion.div
@@ -29,12 +30,14 @@ export function WorkingSection() {
               />
               Careers
             </span>
-            <h2 className="mt-8 font-display text-[clamp(2rem,5vw,5.5rem)] font-bold leading-[0.95] text-foreground">
-              Working at
-              <br />
-              <span className="text-primary">{COMPANY.name}</span>
-            </h2>
-            <p className="mt-10 max-w-md text-lg leading-relaxed text-muted-foreground">
+            <RepelWrapper config={{ maxRepel: 18 }}>
+              <h2 className="mt-8 font-display text-[clamp(2rem,5vw,5.5rem)] font-bold leading-[0.95] text-foreground">
+                Working at
+                <br />
+                <span className="text-primary">{COMPANY.name}</span>
+              </h2>
+            </RepelWrapper>
+            <p className="mt-10 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
               We believe the best work happens when exceptional people come
               together with a shared mission. Our culture celebrates bold
               ideas, intellectual honesty, and the pursuit of greatness.

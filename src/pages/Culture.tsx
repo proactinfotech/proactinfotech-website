@@ -3,6 +3,7 @@ import { COMPANY } from "@/constants/company";
 import { stagger, fadeUp, fadeLeft, fadeRight, useParallax } from "@/lib/animations";
 import { TextRevealSection } from "@/components/layout/TextRevealSection";
 import { ExploreButton } from "@/components/layout/ExploreButton";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const VALUES = [
   { title: "Intellectual Courage", description: "We seek out the hardest truths. The best ideas emerge when people are brave enough to challenge assumptions and speak honestly." },
@@ -41,7 +42,7 @@ const Culture = () => (
 
 function CultureHero() {
   return (
-    <section id="culture-hero" className="flex min-h-[70vh] items-end px-6 pb-20 pt-32 md:min-h-[80vh] md:pb-24 md:px-20">
+    <section id="culture-hero" className="flex min-h-[80vh] items-end px-6 pb-14 pt-24 md:min-h-[80vh] md:pb-24 md:pt-32 md:px-20">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -60,16 +61,15 @@ function CultureHero() {
           />
           Culture
         </motion.span>
-        <motion.h1
-          variants={fadeUp}
-          className="max-w-5xl font-display text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[0.9] tracking-tight text-foreground"
-        >
-          How we work
-          <br />
-          <span className="text-primary">defines what</span>
-          <br />
-          <span className="text-accent">we build.</span>
-        </motion.h1>
+        <RepelWrapper variants={fadeUp}>
+          <h1 className="max-w-5xl font-display text-[clamp(2rem,6vw,6.5rem)] font-bold leading-[0.9] tracking-tight text-foreground">
+            How we work
+            <br />
+            <span className="text-primary">defines what</span>
+            <br />
+            <span className="text-accent">we build.</span>
+          </h1>
+        </RepelWrapper>
         <motion.p
           variants={fadeRight}
           className="mt-10 max-w-lg text-base leading-relaxed text-muted-foreground md:text-lg"

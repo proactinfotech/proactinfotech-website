@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ContactForm } from "@/features/contact/components/ContactForm";
 import { Mail } from "lucide-react";
 import { COMPANY } from "@/constants/company";
+import { RepelWrapper } from "@/components/ui/RepelWrapper";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -27,7 +28,7 @@ const FEATURES = [
 
 const Contact = () => {
   return (
-    <section id="contact-form" className="min-h-screen px-6 pb-32 pt-32 md:px-20">
+    <section id="contact-form" className="flex min-h-screen items-center px-6 py-24 md:px-20 md:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 md:grid-cols-[2fr_3fr] md:gap-20 lg:gap-28">
 
@@ -51,14 +52,13 @@ const Contact = () => {
               Contact
             </motion.span>
 
-            <motion.h1
-              variants={fadeUp}
-              className="font-display text-[clamp(2.5rem,6vw,6rem)] font-bold leading-[0.9] tracking-tight text-foreground"
-            >
-              Get in
-              <br />
-              <span className="text-primary">Touch.</span>
-            </motion.h1>
+            <RepelWrapper variants={fadeUp}>
+              <h1 className="font-display text-[clamp(2.5rem,6vw,6rem)] font-bold leading-[0.9] tracking-tight text-foreground">
+                Get in
+                <br />
+                <span className="text-primary">Touch.</span>
+              </h1>
+            </RepelWrapper>
 
             <motion.p
               variants={fadeUp}
