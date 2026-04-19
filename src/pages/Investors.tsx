@@ -15,7 +15,7 @@ const stagger = {
 
 const Investors = () => {
   return (
-    <section className="flex min-h-screen items-center px-6 py-24 md:px-20 md:py-28">
+    <section className="flex min-h-[100svh] items-center px-6 py-20 md:px-20 md:py-28">
       <motion.div
         variants={stagger}
         initial="hidden"

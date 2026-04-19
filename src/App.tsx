@@ -9,9 +9,13 @@ import { BackgroundParticles } from "@/components/layout/BackgroundParticles";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { HeroBorderFrame } from "@/components/layout/HeroBorderFrame";
 import { PageTransitionProvider } from "@/components/layout/PageTransition";
-import { HeroSphere } from "@/components/three/HeroSphere";
-import { MenuPage } from "@/features/menu";
 import { Analytics } from "@vercel/analytics/react";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+
+function SmoothScrollProvider() {
+  useSmoothScroll();
+  return null;
+}
 
 function RouteScrollReset() {
   const { pathname } = useLocation();
@@ -28,8 +32,15 @@ function ConditionalHeroSphere() {
   if (hidden.includes(pathname)) return null;
   return <HeroSphere centered={pathname === "/"} />
 }
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+
+const HeroSphere = lazy(() =>
+  import("@/components/three/HeroSphere").then((module) => ({ default: module.HeroSphere }))
+);
+const MenuPage = lazy(() =>
+  import("@/features/menu").then((module) => ({ default: module.MenuPage }))
+);
+const Index = lazy(() => import("./pages/Index"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const About = lazy(() => import("./pages/About"));
 const Blog = lazy(() => import("./pages/Blog"));
@@ -48,11 +59,14 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <PageTransitionProvider>
+          <SmoothScrollProvider />
           <RouteScrollReset />
           <HeroBorderFrame />
           <BackgroundParticles />
           <main className="relative z-10">
-            <ConditionalHeroSphere />
+            <Suspense fallback={null}>
+              <ConditionalHeroSphere />
+            </Suspense>
             <Suspense
               fallback={
                 <div className="flex min-h-screen items-center justify-center">

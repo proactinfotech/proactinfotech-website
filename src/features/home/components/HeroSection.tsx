@@ -22,13 +22,13 @@ export function HeroSection() {
   const lineScaleY = useTransform(scrollYProgress, [0, 0.5], [1, 2.5]);
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen overflow-hidden">
+    <section ref={sectionRef} id="hero" className="relative min-h-[100svh] overflow-hidden">
       <motion.div
         variants={stagger}
         initial="hidden"
         animate="show"
         style={{ y: textY, opacity: textOpacity }}
-        className="relative z-10 flex min-h-screen flex-col justify-center px-6 py-16 md:px-20 md:py-24"
+        className="relative z-10 flex min-h-[100svh] flex-col justify-center px-6 py-16 md:px-20 md:py-24"
       >
         <div className="mx-auto w-full max-w-7xl">
           <motion.div variants={fadeUp} className="mb-10 flex items-center gap-3">

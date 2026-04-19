@@ -42,7 +42,7 @@ const Culture = () => (
 
 function CultureHero() {
   return (
-    <section id="culture-hero" className="flex min-h-[80vh] items-end px-6 pb-14 pt-24 md:min-h-[80vh] md:pb-24 md:pt-32 md:px-20">
+    <section id="culture-hero" className="flex min-h-[100svh] items-center px-6 py-20 md:min-h-[80vh] md:py-32 md:px-20">
       <motion.div
         variants={stagger}
         initial="hidden"

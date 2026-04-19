@@ -117,7 +117,7 @@ export function MenuPage() {
   const { containerRef: panelRef, x, y, onMouseMove, onMouseLeave } = useRepel(PANEL_REPEL);
 
   return (
-    <section className="relative flex min-h-screen flex-col px-6 py-12 md:flex-row md:px-16 lg:px-24">
+    <section className="relative flex min-h-[100svh] flex-col px-6 py-10 pb-20 md:flex-row md:py-12 md:pb-12 md:px-16 lg:px-24">
 
       {/* ── Left panel ── */}
       <div

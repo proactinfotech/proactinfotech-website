@@ -28,7 +28,7 @@ const FEATURES = [
 
 const Contact = () => {
   return (
-    <section id="contact-form" className="flex min-h-screen items-center px-6 py-24 md:px-20 md:py-28">
+    <section id="contact-form" className="flex min-h-[100svh] items-center px-6 py-20 md:px-20 md:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-16 md:grid-cols-[2fr_3fr] md:gap-20 lg:gap-28">
 

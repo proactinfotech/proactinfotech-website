@@ -116,7 +116,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
               <motion.div
                 key={cell.id}
                 className="h-full w-full origin-center"
-                style={{ backgroundColor: "#F7DFBA" }}
+                style={{ backgroundColor: "#2E4B3C" }}
                 /**
                  * On the initial reveal the cells are already fully visible —
                  * no enter animation, they just sweep away (out).
@@ -151,7 +151,7 @@ export function PageTransitionProvider({ children }: { children: React.ReactNode
               className="relative z-10 text-center"
             >
               {COMPANY.name.split(" ").map((word) => (
-                <span key={word} className="block font-display text-[clamp(3rem,10vw,8rem)] font-bold leading-[0.95] tracking-tight text-foreground">
+                <span key={word} className="block font-display text-[clamp(3rem,10vw,8rem)] font-bold leading-[0.95] tracking-tight text-background">
                   {word}
                 </span>
               ))}

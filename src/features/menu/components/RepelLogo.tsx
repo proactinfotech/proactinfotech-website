@@ -15,14 +15,14 @@ export function RepelLogo() {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="h-[clamp(3rem,8vw,7.6rem)] w-auto shrink-0 object-contain"
+        className="h-[clamp(4.5rem,12vw,7.6rem)] w-auto shrink-0 object-contain"
       />
       {/* Name — two words forced onto two lines */}
       <motion.h1
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="font-display text-[clamp(1.4rem,4vw,3.8rem)] font-bold leading-[1] tracking-tight text-foreground"
+        className="font-display text-[clamp(2.4rem,7vw,3.8rem)] font-bold leading-[1] tracking-tight text-foreground"
       >
         {COMPANY.name.split(" ").map((word, i) => (
           <span key={i} className="block">{word}</span>

@@ -17,6 +17,7 @@ const PERKS = [
 const Careers = () => (
   <>
     <CareersHero />
+    <PeopleFirstSection />
     <WhyJoinSection />
     <OpeningsSection />
   </>
@@ -24,7 +25,7 @@ const Careers = () => (
 
 function CareersHero() {
   return (
-    <section id="careers-hero" className="flex min-h-[80vh] items-end px-6 pb-14 pt-24 md:min-h-[80vh] md:pb-24 md:pt-32 md:px-20">
+    <section id="careers-hero" className="flex min-h-[100svh] items-center px-6 py-20 md:min-h-[80vh] md:py-32 md:px-20">
       <motion.div
         variants={stagger}
         initial="hidden"
@@ -62,6 +63,102 @@ function CareersHero() {
         </motion.p>
         <ExploreButton />
       </motion.div>
+    </section>
+  );
+}
+
+function PeopleFirstSection() {
+  const left = useParallax(25);
+  const right = useParallax(25);
+
+  return (
+    <section className="px-6 py-24 md:px-20 md:py-32">
+      <div className="mx-auto max-w-7xl">
+
+        {/* Two-column layout, open and breathable */}
+        <div className="grid gap-16 md:grid-cols-2 md:gap-24 lg:gap-32">
+
+          {/* Left col — intro text */}
+          <motion.div
+            ref={left.ref}
+            style={{ y: left.y }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col justify-center"
+          >
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="mb-8 font-display text-[clamp(1.8rem,3.5vw,3rem)] font-bold leading-[1.05] text-foreground"
+            >
+              Hiring is the most important role<br />
+              at <span className="text-primary">{COMPANY.name}</span>
+            </motion.h2>
+            <p className="text-lg leading-[1.8] text-muted-foreground">
+              Identifying, recruiting, and enabling the right people in the right teams is by far one of the highest leverage roles any of us play within the organization.
+            </p>
+            <p className="mt-6 text-lg leading-[1.8] text-muted-foreground">
+              We are always on the lookout for exceptional folks to join {COMPANY.name}, no matter their experience. If you&apos;re passionate about what we&apos;re building, we&apos;ll find a place for you.
+            </p>
+            <p className="mt-8 font-display text-xl font-semibold leading-snug text-foreground md:text-2xl">
+              We create opportunities around great people, not the other way around.
+            </p>
+          </motion.div>
+
+          {/* Right col — questions */}
+          <motion.div
+            ref={right.ref}
+            style={{ y: right.y }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="flex flex-col justify-center"
+          >
+            <h2 className="font-display text-[clamp(1.6rem,3vw,2.8rem)] font-bold leading-[1.1] text-foreground">
+              When we meet potential team members, we ask{" "}
+              <span className="text-primary">ourselves:</span>
+            </h2>
+            <motion.ul
+              variants={stagger}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className="mt-10 space-y-5"
+            >
+              {[
+                "Are they smarter than us?",
+                "Are they more ambitious than us?",
+                "Do they take full ownership of their lives?",
+                "Are they comfortable saying, \"I don't know\"?",
+              ].map((q) => (
+                <motion.li
+                  key={q}
+                  variants={fadeUp}
+                  className="flex items-start gap-4 text-lg leading-relaxed text-muted-foreground"
+                >
+                  <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  {q}
+                </motion.li>
+              ))}
+            </motion.ul>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="mt-8 text-base text-muted-foreground/60"
+            >
+              If that sounds like you, we&apos;d love to meet&hellip;
+            </motion.p>
+          </motion.div>
+
+        </div>
+      </div>
     </section>
   );
 }
