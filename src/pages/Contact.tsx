@@ -85,6 +85,13 @@ const Contact = () => {
                 <Mail size={16} className="shrink-0 text-primary" />
                 {COMPANY.email}
               </a>
+              <a
+                href={`mailto:${COMPANY.supportEmail}`}
+                className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-primary"
+              >
+                <Mail size={16} className="shrink-0 text-primary" />
+                {COMPANY.supportEmail}
+              </a>
             </motion.div>
           </motion.div>
 

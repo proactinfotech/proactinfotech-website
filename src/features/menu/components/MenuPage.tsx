@@ -189,6 +189,19 @@ export function MenuPage() {
           >
             {COMPANY.email}
           </motion.a>
+
+          {/* Support email pill */}
+          <motion.a
+            href={`mailto:${COMPANY.supportEmail}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.3, duration: 0.5 }}
+            whileHover={{ x: 5, scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+            className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-border/40 px-5 py-2 font-body text-xs tracking-wide text-muted-foreground transition-colors hover:border-primary hover:text-primary"
+          >
+            {COMPANY.supportEmail}
+          </motion.a>
         </motion.div>
       </div>
 

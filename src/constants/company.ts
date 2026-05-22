@@ -7,5 +7,6 @@ export const COMPANY = {
     "We invest in, build, and scale transformative companies — empowering teams to solve meaningful problems and deliver exceptional value to millions.",
   jobsUrl: "https://jobs.proactinfotech.com",
   email: "hello@proactinfotech.com",
+  supportEmail: "support@proactinfotech.com",
   marqueeText: "Innovation · Impact · Excellence · Growth · Technology · Future",
 } as const;
