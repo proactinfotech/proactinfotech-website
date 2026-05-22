@@ -71,6 +71,35 @@ export const BUSINESSES: Business[] = [
       },
     ],
   },
+  {
+    name: "Coming Soon",
+    slug: "coming-soon",
+    tagline: "Our Next Venture",
+    description:
+      "We're working on something amazing. Stay tuned for our latest venture that will transform the industry.",
+    longDescription:
+      "Our team is currently developing an innovative solution that will address critical gaps in the market. This upcoming venture will combine cutting-edge technology with our proven expertise to deliver exceptional value to our users and partners. More details coming soon.",
+    url: "https://example.com/coming-soon",
+    color: "hsl(220 13% 60%)",
+    features: [
+      {
+        title: "Innovative Technology",
+        description: "Built on the latest advancements in our core technology stack.",
+      },
+      {
+        title: "User-Centric Design",
+        description: "Designed with our community feedback and real-world use cases in mind.",
+      },
+      {
+        title: "Seamless Integration",
+        description: "Integrates perfectly with our existing ecosystem of products.",
+      },
+      {
+        title: "Future-Ready",
+        description: "Built to scale and adapt to emerging market needs and opportunities.",
+      },
+    ],
+  },
 ];
 
 export function getBusinessBySlug(slug: string): Business | undefined {
