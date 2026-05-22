@@ -52,12 +52,12 @@ function ColorPanel({ biz, index }: { biz: Business; index: number }) {
 
 function TextPanel({ biz, index }: { biz: Business; index: number }) {
   return (
-    <div className="flex flex-col justify-center px-10 py-14 md:px-16 md:py-20">
+    <div className="flex flex-col justify-center px-6 py-10 md:px-16 md:py-20">
       {/* <span className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-primary">
         {zeroPad(index)}
       </span> */}
 
-      <h3 className="mt-4 font-display text-[clamp(2rem,4.5vw,4rem)] font-bold leading-[1.05] text-foreground">
+      <h3 className="mt-4 font-display text-[clamp(1.5rem,6vw,4rem)] font-bold leading-[1.05] text-foreground">
         {biz.name}
       </h3>
 
@@ -200,9 +200,9 @@ export function BusinessesSection() {
           </motion.button>
 
           {/* Carousel Container */}
-          <div className="w-full flex items-center justify-center gap-6 md:gap-8 px-16 md:px-20 overflow-hidden">
+          <div className="w-full flex items-center justify-center gap-6 md:gap-8 px-12 md:px-20 overflow-hidden">
             {/* Left Card */}
-            <div className="flex-1 min-w-0 flex justify-end">
+            <div className="hidden md:flex flex-1 min-w-0 justify-end">
               <div className="w-full max-w-xs">
                 <AnimatePresence mode="popLayout" custom={direction.current}>
                   <motion.div
@@ -224,7 +224,7 @@ export function BusinessesSection() {
             </div>
 
             {/* Center Card */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 md:flex-1">
               <div className="w-full max-w-sm">
                 <AnimatePresence mode="popLayout" custom={direction.current}>
                   <motion.div
@@ -245,7 +245,7 @@ export function BusinessesSection() {
             </div>
 
             {/* Right Card */}
-            <div className="flex-1 min-w-0 flex justify-start">
+            <div className="hidden md:flex flex-1 min-w-0 justify-start">
               <div className="w-full max-w-xs">
                 <AnimatePresence mode="popLayout" custom={direction.current}>
                   <motion.div
